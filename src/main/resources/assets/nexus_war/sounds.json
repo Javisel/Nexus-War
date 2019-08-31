@@ -1,0 +1,21 @@
+{
+  "effect.plutobraclet": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "advent_of_the_gods:item/plutosbraclet",
+        "stream": false
+      }
+    ]
+  },
+"effect.flicker": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "advent_of_the_gods:item/flicker",
+        "stream": false
+      }
+    ]
+  }
+
+}

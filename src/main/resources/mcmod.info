@@ -1,0 +1,18 @@
+[
+{
+  "modid": "nexuswar",
+  "name": "Nexus War",
+  "description": "A mod to turn Minecraft into a large-scale war game.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Javisel"],
+  "credits": "People of WestWeebs",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": [ "ebwizardry" ],
+  "dependencies": [ "ebwizardry" ],
+  "useDependencyInformation": "true"
+}
+]
