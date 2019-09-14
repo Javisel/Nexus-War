@@ -24,7 +24,7 @@ import java.util.List;
 public class TakeCover extends AbilityItem {
 
     public TakeCover() {
-    super("gunslinger_ability_takecover", 18000);
+    super("gunslinger_ability_takecover", 18000,0);
     // TODO Auto-generated constructor stub
 }
 
@@ -32,6 +32,7 @@ public class TakeCover extends AbilityItem {
     @Override
 
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.initializeItem(stack);
 
         if (entityIn instanceof EntityPlayer) {
             EntityPlayer p = (EntityPlayer) entityIn;
@@ -221,7 +222,6 @@ public class TakeCover extends AbilityItem {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        EntityPlayer p = Minecraft.getMinecraft().player;
         tooltip.add("Class: Gunslinger");
         tooltip.add("ACTIVE");
         tooltip.add("Type: Construct");

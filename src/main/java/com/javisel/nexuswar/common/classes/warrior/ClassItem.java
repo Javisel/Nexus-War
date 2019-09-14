@@ -9,8 +9,8 @@ public class ClassItem extends AbilityItem {
     }
 
     String itemclass;
-    public ClassItem(String name, String Class, int cooldown) {
-        super(name,cooldown);
+    public ClassItem(String name, String Class, int cooldown, int upgrades) {
+        super(name,cooldown, upgrades);
         itemclass=Class;
     }
     @Override

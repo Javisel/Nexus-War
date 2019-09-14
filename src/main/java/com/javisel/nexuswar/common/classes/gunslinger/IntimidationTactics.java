@@ -24,8 +24,8 @@ import java.util.List;
 
 public class IntimidationTactics extends AbilityItem {
 
-    public IntimidationTactics(String name) {
-        super(name, 12000);
+    public IntimidationTactics() {
+        super("gunslinger_ability_intimidationtactics", 12000,1);
         // TODO Auto-generated constructor stub
     }
 
@@ -34,6 +34,7 @@ public class IntimidationTactics extends AbilityItem {
     @Override
 
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.initializeItem(stack);
 
         if (entityIn instanceof EntityPlayer) {
             EntityPlayer p = (EntityPlayer) entityIn;

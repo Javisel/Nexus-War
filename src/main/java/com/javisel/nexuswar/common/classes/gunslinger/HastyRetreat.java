@@ -19,11 +19,12 @@ import net.minecraft.world.World;
 
 public class HastyRetreat extends AbilityItem {
     public HastyRetreat() {
-        super("gunslinger_ability_hastyretreat", 12000);
+        super("gunslinger_ability_hastyretreat", 12000,1);
     }
     @Override
 
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.initializeItem(stack);
 
         if (stack.getMetadata()==1) {
             if (entityIn instanceof EntityPlayer) {

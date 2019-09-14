@@ -12,6 +12,8 @@ public class MobEffect extends Potion {
     protected MobEffect(boolean isBadEffectIn, int liquidColorIn,String name) {
         super(isBadEffectIn, liquidColorIn);
         this.textureid=name;
+        setPotionName("effect."+name);
+        setRegistryName(NexusWar.MODID, name);
 
         // TODO Auto-generated constructor stub
     }

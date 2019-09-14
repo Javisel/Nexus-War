@@ -10,11 +10,12 @@ import net.minecraft.world.World;
 
 public class FightThroughThePain extends AbilityItem {
     public FightThroughThePain() {
-        super("gunslinger_ability_fightthroughthepain", 20*60*5);
+        super("gunslinger_ability_fightthroughthepain", 20*60*5,0);
     }
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        super.initializeItem(stack);
 
         if (entityIn instanceof EntityPlayer) {
             if (!isOnCooldown((EntityPlayer) entityIn)) {

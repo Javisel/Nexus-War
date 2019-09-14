@@ -3,16 +3,13 @@ package com.javisel.nexuswar.common.classes.warrior;
 import com.javisel.nexuswar.common.classes.AbilityItem;
 import com.javisel.nexuswar.main.utilities.BlockUtilities;
 import com.javisel.nexuswar.main.utilities.MobUtilities;
-import com.javisel.nexuswar.main.utilities.RenderUtilities;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -26,16 +23,13 @@ import java.util.List;
 
 public class BattleStomp extends AbilityItem {
     public BattleStomp() {
-        super("warrior_ability_battlestomp",150);
+        super("warrior_ability_battlestomp",150,0);
     }
     @Override
 
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
-        if (!stack.hasTagCompound()) {
-
-        }
-
+       super.initializeItem(stack);
         if (entityIn instanceof EntityPlayer) {
             EntityPlayer p = (EntityPlayer) entityIn;
             if (isSelected && !p.getCooldownTracker().hasCooldown(this)) {
@@ -113,12 +107,7 @@ public class BattleStomp extends AbilityItem {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        int i = stack.getMetadata();
-        boolean isSelecting = false;
 
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("isselecting")) {
-            isSelecting = stack.getTagCompound().getBoolean("isselecting");
-        }
         tooltip.add("Class: Warrior");
         tooltip.add("ACTIVE");
         tooltip.add("Type: Area");

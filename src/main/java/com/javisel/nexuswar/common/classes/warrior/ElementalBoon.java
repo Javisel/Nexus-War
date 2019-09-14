@@ -2,15 +2,9 @@ package com.javisel.nexuswar.common.classes.warrior;
 
 import com.javisel.nexuswar.common.classes.AbilityItem;
 import com.javisel.nexuswar.common.items.EnumElements;
-import com.javisel.nexuswar.common.items.ItemBase;
 import com.javisel.nexuswar.common.items.ModItems;
-import com.javisel.nexuswar.common.mobeffects.MobEffect;
-import com.javisel.nexuswar.common.mobeffects.Stun;
 import com.javisel.nexuswar.main.NexusWar;
-import com.javisel.nexuswar.main.utilities.ItemUtilities;
-import com.javisel.nexuswar.main.utilities.MobUtilities;
 import com.javisel.nexuswar.main.utilities.RenderUtilities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -18,11 +12,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -37,8 +28,7 @@ public class ElementalBoon extends AbilityItem {
 
 
     public ElementalBoon() {
-        super("warrior_ability_elementalboon", 12000);
-        this.setMaxDamage(201);
+        super("warrior_ability_elementalboon", 12000, 0);
         this.hasSubtypes=true;
     }
 
@@ -52,10 +42,9 @@ public class ElementalBoon extends AbilityItem {
     public String getTranslationKey(ItemStack stack){
 
         int i = stack.getMetadata();
-        if (i < 0  || i > EnumElements.values().length) {
-            return super.getTranslationKey() + "." + EnumElements.byMetadata(0).getUnlocalizedName();
-
-        }
+            if (i>EnumElements.values().length)  {
+                i = EnumElements.values().length;
+            }
 
         return super.getTranslationKey() + "." + EnumElements.byMetadata(i).getUnlocalizedName();
     }
@@ -64,13 +53,14 @@ public class ElementalBoon extends AbilityItem {
 
 
         for (int i =0; i <EnumElements.values().length; i++) {
+            System.out.println("Element " + i + ": " + EnumElements.byMetadata(i));
             NexusWar.proxy.registerItemRenderer(this, i, name + "." + EnumElements.byMetadata(i).getUnlocalizedName());
         }
 
     }
     @Override
-    public void InitializeItem(ItemStack stack) {
-        super.InitializeItem(stack);
+    public void initializeItem(ItemStack stack) {
+        super.initializeItem(stack);
     }
 
     @Override
@@ -78,19 +68,6 @@ public class ElementalBoon extends AbilityItem {
         return 256;
     }
 
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-
-
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("iselecting") && stack.getTagCompound().getBoolean("isselecting")) {
-            return  stack.getTagCompound().getInteger("selectiontime");
-
-        }
-
-        return 0;
-
-
-    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
@@ -132,12 +109,13 @@ public class ElementalBoon extends AbilityItem {
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
         NBTTagCompound nbt;
+        super.initializeItem(stack);
         int i = stack.getMetadata();
         if (stack.hasTagCompound()) {
             nbt = stack.getTagCompound();
 
             if (!nbt.hasKey("selectiontime")) {
-                nbt.setInteger("selectiontime", 0);
+                nbt.setInteger("selectiontime",0);
                 nbt.setBoolean("isselecting", false);
             } else {
                 if (nbt.getBoolean("isselecting")) {
@@ -161,7 +139,7 @@ public class ElementalBoon extends AbilityItem {
             nbt = new NBTTagCompound();
 
             if (!nbt.hasKey("selectiontime")) {
-                nbt.setInteger("selectiontime", 200);
+                nbt.setInteger("selectiontime", 0);
                 nbt.setBoolean("isselecting", false);
             }
             stack.setTagCompound(nbt);

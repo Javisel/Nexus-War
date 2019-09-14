@@ -1,6 +1,6 @@
 {
 "parent": "item/generated",
 "textures": {
-"layer0": "nexus_war:item/warrior/warrior_ability_cavalry_rank_0"
+"layer0": "nexus_war:item/warrior/warrior_ability_cavalry"
 }
 }

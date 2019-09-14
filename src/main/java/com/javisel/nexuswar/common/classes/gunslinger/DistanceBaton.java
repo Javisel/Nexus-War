@@ -18,13 +18,14 @@ import java.util.List;
 
 public class DistanceBaton extends AbilityItem {
     public DistanceBaton() {
-        super("gunslinger_ability_distancebaton", 1200);
+        super("gunslinger_ability_distancebaton", 1200,0);
         this.hasSubtypes=false;
     }
 
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
 
+        super.initializeItem(stack);
         if  (stack.getEnchantmentTagList().isEmpty()) {
             stack.addEnchantment(Enchantments.KNOCKBACK, 5);
         }

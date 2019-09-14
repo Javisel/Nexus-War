@@ -28,7 +28,7 @@ import java.util.List;
 
 public class HeavyHit extends AbilityItem {
     public HeavyHit() {
-        super("warrior_ability_heavyhit",10*20);
+        super("warrior_ability_heavyhit",10*20,0);
     }
 
 
@@ -53,24 +53,5 @@ public class HeavyHit extends AbilityItem {
         tooltip.add(
                 "Grant your next melee attack within 5s +50% Damage.");
 
-        if (p != null) {
-            if (p.getCooldownTracker().hasCooldown(this)) {
-                double cd = this.getCooldown();
-                double percentcd = (p.getCooldownTracker().getCooldown(this,
-                        Minecraft.getMinecraft().getRenderPartialTicks()));
-
-                percentcd = (p.getCooldownTracker().getCooldown(this, Minecraft.getMinecraft().getRenderPartialTicks())
-                        * 100);
-                cd /= 100;
-                cd *= percentcd;
-                cd /= 20;
-                tooltip.add("Cooldown: " + (double) cd + "s");
-
-            } else {
-                tooltip.add("Cooldown: Ready");
-
-            }
-
-        }
     }
 }

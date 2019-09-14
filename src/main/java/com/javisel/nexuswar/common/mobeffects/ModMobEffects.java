@@ -8,16 +8,17 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModMobEffects  {
 
-    public static Potion Antiheal = new Antiheal().setPotionName("effect.antiheal").setRegistryName(NexusWar.MODID, "antiheal");
-    public static Potion Corrosion = new Corrosion().setPotionName("effect.corrosion").setRegistryName(NexusWar.MODID, "corrosion");
-    public static Potion Infested = new Infested().setPotionName("effect.infested").setRegistryName(NexusWar.MODID,"infested");
-    public static Potion Disarm = new Disarm().setPotionName("effect.disarm").setRegistryName(NexusWar.MODID,"Disarm");
-    public static Potion Reaping = new Reaping().setPotionName("effect.reaping").setRegistryName(NexusWar.MODID,"reaping");
-    public static Potion Restoration = new Restoration().setPotionName("effect.restoration").setRegistryName(NexusWar.MODID,"restoration");
-    public static Potion HeavyHit = new HeavyHit().setPotionName("effect.heavyhit").setRegistryName(NexusWar.MODID,"heavyhit");
-    public static Potion Stun = new Stun().setPotionName("effect.stun").setRegistryName(NexusWar.MODID,"stun").	registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "0c8c7776-2e38-4997-9824-94d836be6d45", -55555555555555D, 2);
-    public static Potion Execution = new Execution().setPotionName("effect.execution").setRegistryName(NexusWar.MODID,"execution");
-
+    public static Potion Antiheal = new Antiheal();
+    public static Potion Corrosion = new Corrosion();
+    public static Potion Infested = new Infested();
+    public static Potion Disarm = new Disarm();
+    public static Potion Reaping = new Reaping();
+    public static Potion Restoration = new Restoration();
+    public static Potion HeavyHit = new HeavyHit();
+    public static Potion Stun = new Stun().	registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "0c8c7776-2e38-4997-9824-94d836be6d45", -55555555555555D, 2);
+    public static Potion StunningStrike = new StunningStrike();
+    public static Potion Execution = new Execution();
+    public static Potion Invincibility = new Invincibility();
     public static void register(IForgeRegistry<Potion> registry) {
 
         registry.registerAll(
@@ -29,7 +30,9 @@ public class ModMobEffects  {
                 Restoration,
                 HeavyHit,
                 Stun,
-                Execution
+                StunningStrike,
+                Execution,
+                Invincibility
         );
 
     }

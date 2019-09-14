@@ -5,5 +5,7 @@ public enum EnumTeams {
     DAY,
     NIGHT,
     NEUTRAL,
+    UNAFFILIATED,
+
 
 }

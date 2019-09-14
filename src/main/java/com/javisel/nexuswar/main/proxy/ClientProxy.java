@@ -1,6 +1,7 @@
 package com.javisel.nexuswar.main.proxy;
 
 
+import com.javisel.nexuswar.client.OverlayRenderer;
 import com.javisel.nexuswar.common.classes.warrior.ClassItem;
 import com.javisel.nexuswar.main.NexusWar;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -29,6 +30,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void postInit(FMLPostInitializationEvent e) {
+        MinecraftForge.EVENT_BUS.register(new OverlayRenderer());
 
 
     }
@@ -39,9 +41,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerItemRenderer(Item item, int meta, String id) {
 
-
-            ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(NexusWar.MODID + ":" + id, "inventory"));
-
+        System.out.println(id);
+        ModelLoader.setCustomModelResourceLocation(item, meta,new ModelResourceLocation(NexusWar.MODID + ":" + id, "inventory"));
     }
 
 

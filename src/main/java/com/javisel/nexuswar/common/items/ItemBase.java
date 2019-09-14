@@ -13,9 +13,8 @@ public class ItemBase extends Item {
 
     public ItemBase(String name) {
         this.name = name;
-        setRegistryName(NexusWar.MODID,name);
+        setRegistryName(name);
         setTranslationKey(name);
-
     }
 
     public void registerItemModel() {

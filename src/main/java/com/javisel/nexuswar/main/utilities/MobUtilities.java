@@ -1,5 +1,6 @@
 package com.javisel.nexuswar.main.utilities;
 
+import com.javisel.nexuswar.common.entitycapabilities.INexusWarCapabilities;
 import com.javisel.nexuswar.common.entitycapabilities.NexusWarCapabilitiesProvider;
 import com.javisel.nexuswar.common.enums.EnumTeams;
 import net.minecraft.entity.Entity;
@@ -39,10 +40,20 @@ public class MobUtilities {
 
     public static boolean canHurt(Entity attacker, Entity defender) {
 
-        if (defender.getCapability(NexusWarCapabilitiesProvider.I_NEXUS_WAR_CAPABILITY,null).getTeam() == EnumTeams.NEUTRAL) return  true;
+        if (defender.getCapability(NexusWarCapabilitiesProvider.I_NEXUS_WAR_CAPABILITY,null).getTeam() == EnumTeams.NEUTRAL || defender.getCapability(NexusWarCapabilitiesProvider.I_NEXUS_WAR_CAPABILITY,null).getTeam()==EnumTeams.UNAFFILIATED) return  true;
 
         else return  !isOnSameTeam(attacker,defender);
 
+
+
+    }
+
+    public static boolean isNexusCombat(Entity a, Entity b) {
+
+        INexusWarCapabilities ACapabilities = a.getCapability(NexusWarCapabilitiesProvider.I_NEXUS_WAR_CAPABILITY,null);
+        INexusWarCapabilities BCapabilities = b.getCapability(NexusWarCapabilitiesProvider.I_NEXUS_WAR_CAPABILITY,null);
+
+        return (ACapabilities.getTeam() != EnumTeams.UNAFFILIATED && BCapabilities.getTeam()!=EnumTeams.UNAFFILIATED && ACapabilities.getTeam() != BCapabilities.getTeam());
 
 
     }

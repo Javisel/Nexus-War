@@ -4,6 +4,7 @@ import com.javisel.nexuswar.common.classes.AbilityItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -23,7 +24,7 @@ import java.util.List;
 public class WarriorsMight extends AbilityItem {
 
     public WarriorsMight() {
-        super("warrior_ability_warriorsmight",20*5*10);
+        super("warrior_ability_warriorsmight",20*5*10,1);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class WarriorsMight extends AbilityItem {
 
         if (!worldIn.isRemote) {
             if (entityIn instanceof EntityLivingBase) {
-            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 0));
+      ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.RESISTANCE));
 
             }
         }
@@ -80,25 +81,7 @@ public class WarriorsMight extends AbilityItem {
         if (i==1) {
             tooltip.add("Upgrade: Also Cleanses slows, grants Speed I and increases buff duration to 20s");
         }
-        if (p != null) {
-            if (p.getCooldownTracker().hasCooldown(this)) {
-                double cd = this.getCooldown();
-                double percentcd = (p.getCooldownTracker().getCooldown(this,
-                        Minecraft.getMinecraft().getRenderPartialTicks()));
 
-                percentcd = (p.getCooldownTracker().getCooldown(this, Minecraft.getMinecraft().getRenderPartialTicks())
-                        * 100);
-                cd /= 100;
-                cd *= percentcd;
-                cd /= 20;
-                tooltip.add("Cooldown: " + (double) cd + "s");
-
-            } else {
-                tooltip.add("Cooldown: Ready");
-
-            }
-
-        }
     }
 
     @Override

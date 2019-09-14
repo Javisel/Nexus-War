@@ -1,9 +1,12 @@
 package com.javisel.nexuswar.main;
 
+import com.javisel.nexuswar.common.blocks.ModBlocks;
+import com.javisel.nexuswar.common.enchantments.ModEnchantments;
 import com.javisel.nexuswar.common.items.ModItems;
 import com.javisel.nexuswar.common.mobeffects.ModMobEffects;
 import com.javisel.nexuswar.main.proxy.CommonProxy;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -50,7 +53,8 @@ public class NexusWar
         @SubscribeEvent
         public static void registerItems(RegistryEvent.Register<Item> event) {
             ModItems.register(event.getRegistry());
-          //  ModBlocks.registerItemBlocks(event.getRegistry());
+
+           ModBlocks.registerItemBlocks(event.getRegistry());
 
         }
         @SubscribeEvent
@@ -58,18 +62,22 @@ public class NexusWar
             ModMobEffects.register(event.getRegistry());
 
         }
+        @SubscribeEvent
+        public static void RegisterEnchantments(RegistryEvent.Register<Enchantment> event) {
+            ModEnchantments.register(event.getRegistry());
 
+        }
 
         @SubscribeEvent
         public static void registerModels(ModelRegistryEvent event) {
           ModItems.registerModels();
-            //ModBlocks.registerModels();
+          ModBlocks.registerModels();
 
         }
 
         @SubscribeEvent
         public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        //    ModBlocks.register(event.getRegistry());
+          ModBlocks.register(event.getRegistry());
         }
     }
 }

@@ -2,12 +2,12 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"4": "advent_of_the_gods:blocks/stars",
-		"glass": "advent_of_the_gods:blocks/glass",
-		"gold_block": "advent_of_the_gods:blocks/gold",
-		"quartz_block_side": "advent_of_the_gods:blocks/quartz",
-		"trappedmoon": "advent_of_the_gods:blocks/trappedmoon",
-		"particle": "advent_of_the_gods:blocks/stars"
+		"4": "nexus_war:blocks/stars",
+		"glass": "nexus_war:blocks/glass",
+		"gold_block": "nexus_war:blocks/gold",
+		"quartz_block_side": "nexus_war:blocks/quartz",
+		"trappedmoon": "nexus_war:blocks/trappedmoon",
+		"particle": "nexus_war:blocks/stars"
 	},
 	"elements": [
 		{

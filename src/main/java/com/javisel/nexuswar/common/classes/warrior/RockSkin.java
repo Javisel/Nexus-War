@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RockSkin extends AbilityItem {
     public RockSkin() {
-        super("warrior_ability_rockskin",0);
+        super("warrior_ability_rockskin",0,0);
     }
 
     @SideOnly(Side.CLIENT)

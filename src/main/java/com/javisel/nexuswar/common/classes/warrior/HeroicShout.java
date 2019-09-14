@@ -29,8 +29,9 @@ import java.util.List;
 public class HeroicShout extends AbilityItem {
 
     public HeroicShout() {
-        super("warrior_ability_heroicshout",20*5*60);
+        super("warrior_ability_heroicshout",20*5*60,1);
         this.hasSubtypes=true;
+
     }
 
     @Override
@@ -40,12 +41,7 @@ public class HeroicShout extends AbilityItem {
         NBTTagCompound nbt;
 
 
-        if (!stack.hasTagCompound()) {
-            nbt = new NBTTagCompound();
-            nbt.setInteger("rank",1);
-            nbt.setInteger("cooldown",60*20);
-            stack.setTagCompound(nbt);
-        }
+        super.initializeItem(stack);
 
 
         if (entityIn instanceof EntityPlayer) {
@@ -147,38 +143,9 @@ public class HeroicShout extends AbilityItem {
             tooltip.add("Upgrade: Also Cleanses slows, grants Speed I and increases buff duration to 20s");
 
         }
-        if (p != null) {
-            if (p.getCooldownTracker().hasCooldown(this)) {
-                double cd = this.getCooldown();
-                double percentcd = (p.getCooldownTracker().getCooldown(this,
-                        Minecraft.getMinecraft().getRenderPartialTicks()));
 
-                percentcd = (p.getCooldownTracker().getCooldown(this, Minecraft.getMinecraft().getRenderPartialTicks())
-                        * 100);
-                cd /= 100;
-                cd *= percentcd;
-                cd /= 20;
-                tooltip.add("Cooldown: " + (double) cd + "s");
-
-            } else {
-                tooltip.add("Cooldown: Ready");
-
-            }
-
-        }
     }
 
-    @Override
-    public String getTranslationKey(ItemStack stack){
-
-        int i = stack.getMetadata();
-        if (i ==1) {
-            return super.getTranslationKey() + ".upgraded";
-
-        }
-
-        return super.getTranslationKey();
-    }
 
 
     }
